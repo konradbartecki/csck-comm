@@ -15,19 +15,25 @@ class DataType(enum):
 
 @dataclass
 class Config:
-    Mode: Mode
-    TransferDataType: DataType
-    WorkingDirectory: str
+    Mode: Mode = Mode.Client
+    TransferDataType: DataType = DataType.Binary
+    WorkingDirectory: str = "./tmp"
     # TODO: Encryption
 
 
 @dataclass
 class ClientConfig(Config):
-    TargetAddress: str
-    TargetPort: str
+    def __init__(self):
+        pass
+
+    TargetAddress: str = "127.0.0.1"
+    TargetPort: str = "9545"
 
 
 @dataclass
 class ServerConfig(Config):
-    ListenAddress: str
-    ListenPort: str
+    def __init__(self):
+        pass
+
+    ListenAddress: str = "0.0.0.0"
+    ListenPort: str = "9545"
