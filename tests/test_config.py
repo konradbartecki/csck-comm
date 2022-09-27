@@ -1,12 +1,12 @@
 import unittest
 
-from AppConfig import AppConfig
+from config import config
 
 
 class ConfigTests(unittest.TestCase):
     def test_can_create_config(self):
-        config = AppConfig()
-        self.assertEqual(config.Mode, AppConfig.Mode.Client)
+        config = config()
+        self.assertEqual(config.Mode, config.Mode.Client)
         self.assertEqual(config.WorkingDirectory, "./tmp")
 
     def test_can_read_from_json_client(self):

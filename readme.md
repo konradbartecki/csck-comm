@@ -30,3 +30,6 @@ App requirements:
  - Ability for the app to be configured through settings file
  - No hard-coding within the app.
  - Command line arguments would be a good-to-have feature, but it is not required.
+
+## `ADL-2` - Moving server/client code into Python modules
+
