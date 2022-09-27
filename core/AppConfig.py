@@ -1,12 +1,13 @@
 from dataclasses import dataclass
+from enum import Enum
 
 
-class Mode(enum):
+class Mode(Enum):
     Client = 1
     Server = 2
 
 
-class DataType(enum):
+class DataType(Enum):
     PlainText = 1
     XML = 2
     JSON = 3
@@ -14,7 +15,7 @@ class DataType(enum):
 
 
 @dataclass
-class Config:
+class AppConfig:
     Mode: Mode = Mode.Client
     TransferDataType: DataType = DataType.Binary
     WorkingDirectory: str = "./tmp"
@@ -22,7 +23,7 @@ class Config:
 
 
 @dataclass
-class ClientConfig(Config):
+class ClientAppConfig(AppConfig):
     def __init__(self):
         pass
 
@@ -31,7 +32,7 @@ class ClientConfig(Config):
 
 
 @dataclass
-class ServerConfig(Config):
+class ServerAppConfig(AppConfig):
     def __init__(self):
         pass
 
