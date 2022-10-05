@@ -3,15 +3,13 @@
 import socket
 import threading
 
-# Variables in capital letters are constants such as PORT and SERVER
-
-# We don't know size of msg received, so we use default 64 byte length
+# Default 64 byte length for incoming messages
 HEADER = 64
 
 # Use a free port
 PORT = 5050
 
-# Code to automatically generate the IP address to run server on
+# Code to automatically generate the local IP address to run server on
 SERVER = socket.gethostbyname(socket.gethostname())
 
 # Address
@@ -29,13 +27,9 @@ server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # Bind socket
 server.bind(ADDR)
 
-# Create functions to connect client to server
-
+# New thread to handle the connected client, this function enables the server to receive messages in utf-8 format
 def handle_client(conn, addr):
     print(f"[New connection] {addr} connected to server")
-    
-    # State how many bytes we want to receive from the client
-    # Decode message from bytes format
     connected = True
     while connected:
         msg_length = conn.recv(HEADER).decode(FORMAT)
@@ -52,8 +46,6 @@ def handle_client(conn, addr):
     # Close connection  
     conn.close()
         
-    
-
 # Listen for new connections and display how many clients are connected to the server
 def start():
     server.listen()
@@ -68,3 +60,4 @@ def start():
 # Message to confirm server connection is live
 print("Server connection is being established...")
 start()
+
