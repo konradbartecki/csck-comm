@@ -1,5 +1,7 @@
 # import relevant modules
 import socket
+from dictionary import some_dict
+from pickling import pickling_file_type
 
 # Default 64 byte length for incoming messages
 HEADER = 64
@@ -13,7 +15,7 @@ FORMAT = 'utf-8'
 # Message for client to disconnect from server
 DISCONNECT_MESSAGE = "DISCONNECT SERVER"
 
-# Enter local IP address. Clients must be connected to this IP to connect to the server
+# Enter local IP address.
 SERVER = '127.0.0.1'
 
 ADDR = (SERVER, PORT)
@@ -37,4 +39,7 @@ def send(msg):
 # Enter the message you would like to send below. Send DISCONNECT_MESSAGE to disconnect from the server.
 send(input('Enter your message here: '))
 
-    
+# Function to send file to server
+def send_file(some_dict):
+    file = pickling_file_type(some_dict)
+    client.send(file)
