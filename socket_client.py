@@ -15,8 +15,10 @@ def client_program():
     # where dont_encrypt(some_dict) returns the serialised file to 
     # send to the server 
     client_socket.sendall(bytes(dont_encrypt(some_dict), encoding="utf-8"))
-  
+
     client_socket.close()  # close the connection
+
+
 
 
 if __name__ == '__main__':
