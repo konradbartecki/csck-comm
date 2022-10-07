@@ -3,8 +3,8 @@ import json
 from dictionary import some_dict
 from dict2xml import dict2xml
 from encrypt import encrypt_data
-
-save_or_not = False
+from encrypt import send_encrypted_file
+save_or_not = True
 
 def do_encrypt(some_dict):
     '''
@@ -20,7 +20,15 @@ def do_encrypt(some_dict):
     output_file_encrypt.close()
     encrypt_data(output_file_encrypt)
     print('We\'re all done!')
-    
+
+    while True:
+        send_encrypted = input('Send encrypted file to the server? y or n: ')
+        if send_encrypted in ['y', 'n']:
+            break
+        else:
+            print('Please enter y or n')
+    if send_encrypted == 'y':
+        send_encrypted_file(some_dict)
         
 
 def dont_encrypt(some_dict):
