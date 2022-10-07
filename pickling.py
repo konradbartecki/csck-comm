@@ -4,6 +4,7 @@ from dictionary import some_dict
 from dict2xml import dict2xml
 from encrypt import encrypt_data
 
+save_or_not = False
 
 def do_encrypt(some_dict):
     '''
@@ -40,28 +41,31 @@ def dont_encrypt(some_dict):
         else:
             print('Incorrect format. Please enter binary, json, or xml')
             continue
-
+    
     # Pickle's to json
     if pickling_type == 'json':
-        output_file = open('json_dict.json', 'w')
-        json.dump(some_dict, output_file)
         data_str = json.dumps(some_dict)
-        output_file.close()
+        if save_or_not == True:
+            output_file = open('json_dict.json', 'w')
+            json.dump(some_dict, output_file)
+            output_file.close()
 
     # Pickle's to binary
     if pickling_type == 'binary':
-        output_file = open('bin_dict.bin', 'wb')
-        data_str = pickle.dumps(some_dict)
-        pickle.dump(some_dict, output_file)
-        output_file.close()
+        data_str = str(pickle.dumps(some_dict))
+        if save_or_not == True:
+            output_file = open('bin_dict.bin', 'wb')
+            pickle.dump(some_dict, output_file)
+            output_file.close()
 
     # Pickles to xml
     if pickling_type == 'xml':
-        xml = dict2xml(some_dict)
         data_str = dict2xml(some_dict)
-        output_file = open('xml_dict', 'w')
-        output_file.write(xml)
-        output_file.close()
+        if save_or_not == True:
+            xml = dict2xml(some_dict)
+            output_file = open('xml_dict', 'w')
+            output_file.write(xml)
+            output_file.close()
     print('Done!')
 
     while True:

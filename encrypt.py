@@ -18,8 +18,6 @@ def encrypt_data(outfile):
     with open("encrypted_file.txt", "r") as outfile:
         data = outfile.read()
 
-    print(data)
-
     # Converts the data into bytes because the encrypt funtion
     # needs byte encoded data
     byte_data = data.encode()

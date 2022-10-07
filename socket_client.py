@@ -9,19 +9,13 @@ def client_program():
     port = 5000  # socket server port number
     BUFFER_SIZE = 4096
     client_socket = socket.socket()  # instantiate
-    client_socket.connect((host, port))  # connect to the server
+    client_socket.connect((host, port))  # connect to the server 
 
-    # try/except here because binary does not like being encoded 
-    # and gives an error. So the first try clause takes the binary
-    # file, while the second try clause takes json and xml 
-    try:
-        client_socket.sendall(bytes(dont_encrypt(some_dict)))
-    except:
-        try:
-            client_socket.sendall(bytes(dont_encrypt(some_dict), encoding="utf-8"))
-        except:
-            return print('Check format. Probably trying to serialise a string')
-
+    # The dictionary is added as the argument for the sendall fuction
+    # where dont_encrypt(some_dict) returns the serialised file to 
+    # send to the server 
+    client_socket.sendall(bytes(dont_encrypt(some_dict), encoding="utf-8"))
+  
     client_socket.close()  # close the connection
 
 
