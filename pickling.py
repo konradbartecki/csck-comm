@@ -4,6 +4,7 @@ from dictionary import some_dict
 from dict2xml import dict2xml
 from encrypt import encrypt_data
 from encrypt import send_encrypted_file
+
 save_or_not = True
 
 def do_encrypt(some_dict):
@@ -74,7 +75,7 @@ def dont_encrypt(some_dict):
             output_file = open('xml_dict', 'w')
             output_file.write(xml)
             output_file.close()
-    print('Done!')
+    print('Pickled!')
 
     while True:
         encrypt = input('Will you be encrypting your data today?: ')

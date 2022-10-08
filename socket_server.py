@@ -21,7 +21,7 @@ def server_program():
 
     data = conn.recv(4096)
 
-    if print_data ==  True:
+    if print_data == True:
     # Using try/except to check if the data from the client
     # is of a certain type i.e. binary, json, or xml. If the
     # data enters the try clause and does not have the correct 
