@@ -14,10 +14,9 @@ class EncryptionType(Enum):
 
 
 class DataType(Enum):
-    PlainText = 1
-    XML = 2
-    JSON = 3
-    Binary = 4
+    XML = 1
+    JSON = 2
+    Binary = 3
 
 
 @dataclass
@@ -27,5 +26,6 @@ class AppConfig:
     BufferSize: int = 4096
     TextEncoding: str = "utf-8"
     Mode: Mode = Mode.Client,
-    TransferDataType: DataType = DataType.Binary
+    DictionarySerializationMethod: DataType = DataType.Binary
     EncryptionType: EncryptionType = EncryptionType.NoEncryption
+    CloseMessage : bytes = b"36c6552c-4e8e-4415-8748-0d078598cd7b"
