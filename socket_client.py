@@ -1,5 +1,5 @@
 import socket
-from pickling import dont_encrypt
+from pickling import encrypt_or_not
 from dictionary import some_dict
 import os.path
 
@@ -14,10 +14,10 @@ def client_program():
     # The dictionary is added as the argument for the sendall fuction
     # where dont_encrypt(some_dict) returns the serialised file to 
     # send to the server 
-    client_socket.sendall(bytes(dont_encrypt(some_dict), encoding="utf-8"))
+    client_socket.sendall(bytes(encrypt_or_not(some_dict), encoding="utf-8"))
 
     client_socket.close()  # close the connection
-
+    
 
 if __name__ == '__main__':
     client_program()
