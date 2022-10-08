@@ -1,6 +1,6 @@
 import pickle
 import json
-from dictionary import some_dict
+from assets.sample_dict import some_dict
 from dict2xml import dict2xml
 from encrypt import encrypt_data
 from encrypt import send_encrypted_file

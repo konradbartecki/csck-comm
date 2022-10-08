@@ -1,6 +1,6 @@
 import unittest
 
-from AppConfig import AppConfig
+from app_config import AppConfig
 
 
 class ConfigTests(unittest.TestCase):

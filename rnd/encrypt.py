@@ -1,5 +1,4 @@
 from cryptography.fernet import Fernet
-from dictionary import some_dict
 
 import socket
 
