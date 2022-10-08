@@ -53,6 +53,7 @@ def main():
             Client(config, new_socket).start()
         if config.Mode == Mode.Server:
             Server(config, new_socket).start()
+    #TODO: Better exception support
     except(Exception) as e:
         print("General error!")
         socket.close()
