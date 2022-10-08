@@ -45,9 +45,11 @@ CONFIG:AppConfig
 def main():
     parser = prepare_argument_parser()
     args = parser.parse_args()
-    if len(sys.argv) <= 1:
+    has_no_arguments_provided = len(sys.argv) <= 1
+    if has_no_arguments_provided:
         parser.print_help()
         exit(1)
+
     CONFIG = prepare_config(args)
     new_socket = socket.socket()
     try:
