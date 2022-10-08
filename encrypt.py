@@ -31,7 +31,7 @@ def encrypt_data(outfile):
         file.write(encrypt_dict)
 
     print('File Encrypted!')
-    
+
     print(encrypt_dict)
 
     
@@ -64,6 +64,5 @@ def send_encrypted_file(en_file):
     print('Encrypted File Sent!')
 
     client_socket.close
-
 
 
