@@ -1,6 +1,6 @@
 import unittest
 
-from CsckExceptions import CsckMessageInvalidException
+from csck_exceptions import CsckMessageInvalidException
 from CsckProtocol import CsckContentType, CsckContentEncodings, CsckEncryptionMode, CsckHeaders, CsckMessage
 
 

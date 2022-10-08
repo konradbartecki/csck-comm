@@ -4,7 +4,7 @@ import argparse
 
 
 from app_config import Mode, DataType, AppConfig
-from CsckExceptions import CsckException
+from csck_exceptions import CsckException
 from client import Client
 from server import Server
 
