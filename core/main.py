@@ -38,10 +38,6 @@ def prepare_config(args):
     # TODO: Encryption
     return AppConfig(port, ipaddress, buffer_size, text_encoding, mode, data_type)
 
-
-#Global config var
-CONFIG:AppConfig
-
 def main():
     parser = prepare_argument_parser()
     args = parser.parse_args()
@@ -50,13 +46,13 @@ def main():
         parser.print_help()
         exit(1)
 
-    CONFIG = prepare_config(args)
+    config = prepare_config(args)
     new_socket = socket.socket()
     try:
-        if CONFIG.Mode == Mode.Client:
-            Client(CONFIG, new_socket).start()
-        if CONFIG.Mode == Mode.Server:
-            Server(CONFIG, new_socket).start()
+        if config.Mode == Mode.Client:
+            Client(config, new_socket).start()
+        if config.Mode == Mode.Server:
+            Server(config, new_socket).start()
     except(Exception) as e:
         print("General error!")
         socket.close()
