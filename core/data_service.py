@@ -1,7 +1,10 @@
+import logging
 import pickle
 import xml
 from datetime import datetime
 import json
+from io import TextIOWrapper
+
 import dicttoxml as dicttoxml
 import xmltodict as xmltodict
 from app_config import AppConfig
@@ -10,15 +13,13 @@ from csck_exceptions import CsckException
 
 class DataService:
     @staticmethod
-    def read_file_as_bytes(path):
-        absolute_path = path.abspath(path)
-        file_exists = path.exists(absolute_path)
-        if not file_exists:
-            raise CsckException(f"File {absolute_path} does not exist")
-        file = open(path, "rb")
-        byte_data = file.read()
-        file.close()
-        return byte_data
+    def save_file(file: TextIOWrapper, content: bytes):
+        try:
+            file.write(content)
+        except Exception as e:
+            logging.error("Error while writing a file {}", e)
+        finally:
+            file.close()
 
     @staticmethod
     def get_sample_dictionary():
