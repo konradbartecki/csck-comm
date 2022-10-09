@@ -1,9 +1,0 @@
-{
-  "Mode" : "Client",
-  "TransferDataType": "PlainText",
-  "WorkingDirectory" : "./tmp",
-  "TargetAddress" : "127.0.0.1",
-  "TargetPort" : "9545",
-  "ListenAddress" : "0.0.0.0",
-  "ListenPort" : "9545"
-}
