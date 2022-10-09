@@ -47,10 +47,6 @@ class ServerConnectionHandler:
         logging.info("Waiting for a file to accept")
         received_command: bytes = self.receive(should_print=False)
         is_file_command = received_command.startswith(self.config.FileCommand)
-
-        print("Received command")
-        print(received_command[0:128])
-
         if not is_file_command:
             raise CsckException("Received malformed send file command")
 
@@ -66,8 +62,6 @@ class ServerConnectionHandler:
         logging.info("Will receive a file of content length {} bytes", content_length)
 
         file_contents = bytearray(remaining_file_content)
-        print("Remaining file contents")
-        print(file_contents[0:128])
         while len(file_contents) < content_length:
             new_content: bytes = self.receive(should_print=False)
             file_contents += new_content
