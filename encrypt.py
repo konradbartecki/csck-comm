@@ -41,6 +41,3 @@ def encrypt_data(outfile):
     print(encrypt_dict)
 
     return str(encrypt_dict)
-
-
-

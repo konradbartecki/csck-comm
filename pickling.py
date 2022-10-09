@@ -24,6 +24,7 @@ def encrypt_or_not(some_dict):
         return en_data
     else:
         data = dont_encrypt(some_dict)
+        
     return data
 
 
