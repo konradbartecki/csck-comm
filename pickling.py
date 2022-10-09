@@ -3,34 +3,29 @@ import json
 from dictionary import some_dict
 from dict2xml import dict2xml
 from encrypt import encrypt_data
-from encrypt import send_encrypted_file
 
 save_or_not = True
 
-def do_encrypt(some_dict):
+def encrypt_or_not(some_dict):
     '''
-    This function takes creates 'encrypted_file.txt' with
-    the contents of the dictionary. Then calls the encrypt_data()
-    function.
-    The user is then asked if they would like an unencrypted
-    pickle file. I f anything other than 'y' or 'n' is entered,
-    the user is re-prompted
+    Does the user want the data to be encrypted
     '''
-    output_file_encrypt = open('encrypted_file.txt', 'w')
-    json.dump(some_dict, output_file_encrypt)
-    output_file_encrypt.close()
-    encrypt_data(output_file_encrypt)
-    print('We\'re all done!')
-
     while True:
-        send_encrypted = input('Send encrypted file to the server? y or n: ')
-        if send_encrypted in ['y', 'n']:
+        encrypt = input('Will you be encrypting your data today?: ')
+        if encrypt in ['y', 'n']:
             break
         else:
             print('Please enter y or n')
-    if send_encrypted == 'y':
-        send_encrypted_file(some_dict)
-        
+        continue
+
+    # Checks if the user wants to encrypt their file
+    if encrypt == 'y':
+        en_data = encrypt_data(some_dict)
+        return en_data
+    else:
+        data = dont_encrypt(some_dict)
+    return data
+
 
 def dont_encrypt(some_dict):
     '''
@@ -53,7 +48,7 @@ def dont_encrypt(some_dict):
     
     # Pickle's to json
     if pickling_type == 'json':
-        data_str = json.dumps(some_dict)
+        data_str = str(json.dumps(some_dict))
         if save_or_not == True:
             output_file = open('json_dict.json', 'w')
             json.dump(some_dict, output_file)
@@ -76,20 +71,6 @@ def dont_encrypt(some_dict):
             output_file.write(xml)
             output_file.close()
     print('Pickled!')
-
-    while True:
-        encrypt = input('Will you be encrypting your data today?: ')
-        if encrypt in ['y', 'n']:
-            break
-        else:
-            print('Please enter y or n')
-        continue
-
-    # Checks if the user wants to encrypt their file
-    if encrypt == 'y':
-        do_encrypt(some_dict)
-    else:
-        print('We\'re all done!')
 
     return data_str
 
