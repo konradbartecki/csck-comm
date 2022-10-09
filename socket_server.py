@@ -4,6 +4,8 @@ import json
 import xml.etree.ElementTree as ET
 from dict2xml import dict2xml
 
+from cryptography.fernet import Fernet
+
 print_data = True
 
 def server_program():
@@ -21,6 +23,8 @@ def server_program():
 
     data = conn.recv(4096)
 
+    str_data = str(data)
+
     if print_data == True:
     # Using try/except to check if the data from the client
     # is of a certain type i.e. binary, json, or xml. If the
@@ -28,23 +32,29 @@ def server_program():
     # data type, it moves onto the next try clause until it can be loaded
         try:
             # binary data
-            data_var = pickle.loads(data)
+            data_var = pickle.loads(str_data)
             print(data_var)
         except:
             try:
                 # json data
-                data_json = json.loads(data)
+                data_json = json.loads(str_data)
                 print(data_json)
             except:
                 try:
                     # xml data
                     print(data)
-                    tree = ET.parse(data)
+                    tree = ET.parse(str_data)
                     root = tree.getroot()
                     print(root)
                 except:
                     return
-
+    # code = bytes(str_data, 'utf-8')
+    # def call_key(): return open("my_key.key", "r").read()
+    # key = call_key()
+    # print(key)
+    # f = Fernet(key)
+    # decoded_data = f.decrypt(code)
+    # print(decoded_data)
 
     conn.close()  # close the connection
 
