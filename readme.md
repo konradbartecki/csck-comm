@@ -2,6 +2,39 @@
 
 Simple client-server communication app with encryption written in Python.
 
+```bash
+usage: main.py [-h] -m {Server,Client} [-b BUFFER] [-p PORT] [-ip IP] [-e ENCODING] [-s SECURE] [-i INTERACTIVE] [-dsm {Binary,XML,JSON}] [-f [FILE]]
+
+CSCK-COMM v1, simple TCP/IP communication tool with encryption support.
+
+options:
+  -h, --help            show this help message and exit
+  -m {Server,Client}, --mode {Server,Client}
+                        Sets the mode in which this app should operate
+  -b BUFFER, --buffer BUFFER
+                        Buffer size in bytes
+  -p PORT, --port PORT  Port to use
+  -ip IP, --ip IP       IP Address to bind, as a server use 0.0.0.0 to bind on all available interfaces
+  -e ENCODING, --encoding ENCODING
+                        Text encoding to use
+  -s SECURE, --secure SECURE
+                        Encryption method to use
+  -i INTERACTIVE, --interactive INTERACTIVE
+                        Interactive client to server chat mode
+  -dsm {Binary,XML,JSON}, --serialization-method {Binary,XML,JSON}
+                        Data type that will be used for de/serialization for a dictionary
+  -f [FILE], --file [FILE]
+                        File path to send or save to
+
+```
+
+Example:
+```bash
+python3 core/main.py -m Server --ip "0.0.0.0"   --port 8222 -dsm Binary
+python3 core/main.py -m Client --ip "127.0.0.1" --port 8222 -dsm Binary
+```
+
+
 ## Architecture Decision Log
 
 ### `ADL-1` - Basic concepts
@@ -12,65 +45,3 @@ For testing `pytest` should be used.
 This repository was already configured with GitHub workflows to run tests on each commit.
 
 For encryption, we could try to use [age](https://github.com/FiloSottile/age) which is a modern version of public-private key encryption inspired by PGP.
-
-Settings should be stored in a `.json` file which should be a key-value dictionary.
-
-App requirements:
- - Ability to listen and accept for TCP/IP connections
- - Ability to connect to servers listening to TCP/IP connections
- - Ability to send generated data over TCP/IP
- - Ability to send files over TCP/IP
- - Support error handling
- - Support for optional encryption
- - Support for data types
-   - Plain text
-   - XML
-   - JSON
-   - Binary
- - Ability for the app to be configured through settings file
- - No hard-coding within the app.
- - Command line arguments would be a good-to-have feature, but it is not required.
-
-### `ADL-2` Message standard
-
-In this project we are using TCP/IP thus everything that we send will be converted to bytes first, then sent over TCP/IP.
-We have to do this for all of the formats that we have to support, meaning `plain_text, xml, json, binary`.
-Because of that I think it makes sense to implement a very small subset of HTTP 1.1 protocol.
-
-We would support POST request only.
-
-Message format would look like follows:
-```http
-POST\n
-HeaderName: value\n
-Content-Type: application/xml\n
-Content-Length: 1234 (length in bytes)\n
-Content-Encoding: utf-8\n
-\n
-\n 
-(raw content of length 1234 bytes)
-```
-
-Meaning that the first lines would be reserved for headers.
-Each header would be separated by a new line `\n` character.
-Then the actual content of the message will follow after a double whitespace character combination `\n\n`.
-
-So for example:
-```http request
-CSCK-COMM/v1 POST
-Content-Type: application/json
-Content-Length: 1234
-
-
-{
-  "Mode" : "Client",
-  "TransferDataType": "PlainText",
-  "WorkingDirectory" : "./tmp",
-  "TargetAddress" : "127.0.0.1",
-  "TargetPort" : "9545",
-  "ListenAddress" : "0.0.0.0",
-  "ListenPort" : "9545"
-}
-```
-
-This would allow us to send metadata/headers along with the actual content of the message easily which would be useful for example to indicate that attached content is encrypted or not.

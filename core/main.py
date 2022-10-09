@@ -1,13 +1,12 @@
 import sys
 import socket
 import argparse
+import logging
 
-from app_config import Mode, DataType, AppConfig
+from app_config import Mode, DataType, AppConfig, EncryptionType
 from client import Client
 from color_formatter import ColorizedArgsFormatter
 from csck_exceptions import CsckException
-import logging
-
 from server import Server
 
 
@@ -32,15 +31,18 @@ def prepare_argument_parser():
     parser.add_argument('-ip', '--ip', help='IP Address to bind, '
                                             'as a server use 0.0.0.0 to bind on all available interfaces', type=str)
     parser.add_argument('-e', '--encoding', help='Text encoding to use', default="utf-8", type=str)
-    parser.add_argument('-s', '--secure', help='Encryption method to use', type=str)
-    parser.add_argument('-i', '--interactive', help='Interactive client to server chat mode', type=str)
+    parser.add_argument('-s', '--secure', help='Encryption method to use', type=str,
+                        choices=["NoEncryption", "Fernet", "Age"],
+                        default="NoEncryption")
     parser.add_argument('-dsm', '--serialization-method',
                         choices=["Binary", "XML", "JSON"],
                         help='Data type that will be used for de/serialization for a dictionary',
                         default="JSON", type=str)
-    parser.add_argument('-f', '--file', nargs='?',
-                        help='File path to send or save to', type=argparse.FileType('r'),
-                        default=sys.stdin)
+    parser.add_argument('-r', '--read', nargs='?',
+                        help='File path to send over the network', type=argparse.FileType("rb"))
+    parser.add_argument('-w', '--write', nargs='?',
+                        help='File path to save the contents to', type=argparse.FileType("wb", 0))
+
     return parser
 
 
@@ -51,9 +53,8 @@ def prepare_config(args):
     buffer_size = int(args.buffer)
     data_type = DataType[args.serialization_method]
     text_encoding = args.encoding
-    # file = args.file
-    # TODO: Encryption
-    return AppConfig(port, ipaddress, buffer_size, text_encoding, mode, data_type)
+    secure = EncryptionType[args.secure]
+    return AppConfig(port, ipaddress, args.write, args.read, buffer_size, text_encoding, mode, data_type, secure)
 
 
 def client_loop(config, new_socket):
@@ -79,7 +80,11 @@ def main():
 
     config = prepare_config(args)
     new_socket = socket.socket()
-    logging.info("{}", config.Mode)
+    logging.info("Running with {}", config.Mode)
+    logging.info("Dictionary serialization mode: {}", config.DictionarySerializationMethod)
+    logging.info("Buffer size: {}, {}, {}", config.BufferSize, config.EncryptionType, config.TextEncoding)
+    logging.info("File read: {}", config.ReadFile)
+    logging.info("File write: {}", config.SaveFile)
     try:
         if config.Mode == Mode.Client:
             client_loop(config, new_socket)

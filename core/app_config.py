@@ -1,5 +1,7 @@
+import argparse
 from dataclasses import dataclass
 from enum import Enum
+from uuid import UUID
 
 
 class Mode(Enum):
@@ -23,9 +25,11 @@ class DataType(Enum):
 class AppConfig:
     Port: int
     IPAddress: str
+    SaveFile : argparse.FileType
+    ReadFile : argparse.FileType
     BufferSize: int = 4096
     TextEncoding: str = "utf-8"
     Mode: Mode = Mode.Client,
     DictionarySerializationMethod: DataType = DataType.Binary
     EncryptionType: EncryptionType = EncryptionType.NoEncryption
-    CloseMessage : bytes = b"36c6552c-4e8e-4415-8748-0d078598cd7b"
+    FileCommand = UUID("f58bfeed-8c3e-4a4f-bae1-1138877dc457").bytes

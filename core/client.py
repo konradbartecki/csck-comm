@@ -25,9 +25,15 @@ class Client:
         logging.info("Connecting to: {}:{}", self.config.IPAddress, self.config.Port)
         self.client_socket.connect((self.config.IPAddress, self.config.Port))
         self.is_connected = True
+        self._demo()
+
+    def _demo(self):
+        logging.info("Running demo scenario...")
         self._send_hello()
         time.sleep(1)
         self._send_dictionary()
+        time.sleep(1)
+        self._send_file()
 
     def send_data(self, byte_content:bytes):
         if not self.is_connected:
@@ -56,7 +62,9 @@ class Client:
         """
         Sends a handshake message
         """
-        self.send_text(f"Hello from client {datetime.now()}")
+        msg = f"Hello from client {datetime.now()}"
+        logging.info("Sending hello demo message: {}", msg)
+        self.send_text(msg)
 
     def send_text(self, text: str):
         payload_bytes = bytes(text, self.config.TextEncoding)
@@ -73,6 +81,26 @@ class Client:
             logging.info("Sending binary dictionary: {}", repr(serialized))
             self.send_data(serialized)
 
-    def _send_file(self, file_path: str):
-        file_bytes = DataService.read_file_as_bytes(file_path)
-        self.send_data(file_bytes)
+    def _send_file(self):
+        if self.config.ReadFile is None:
+            logging.warning("No file provided to send")
+            return
+        with self.config.ReadFile as f:
+            print(repr(self.config.ReadFile))
+            file_contents = f.read()
+            content_length = len(file_contents)
+            content_length_bit_size = content_length.bit_length()
+            content_length_as_bytes = content_length.to_bytes(content_length_bit_size + 7, 'big', signed=False)
+            logging.info("Sending a magic command to prepare server a file of {} bytes, ~{} kB",
+                         content_length, int(content_length/1024))
+            file_cmd = bytearray(self.config.FileCommand)
+            double_new_line = bytes(b'\n\n')
+            magic_msg = bytearray()
+            magic_msg += file_cmd
+            magic_msg += double_new_line
+            magic_msg += content_length_as_bytes
+            magic_msg += double_new_line
+            magic_msg += file_cmd
+
+            self.send_data(magic_msg)
+            self.send_data(file_contents)
