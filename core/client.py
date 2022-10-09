@@ -3,9 +3,10 @@ import io
 import json
 import logging
 import pickle
+import pprint
 import signal
 import time
-import xml
+import dict2xml
 from datetime import datetime
 from app_config import AppConfig
 import socket
@@ -58,17 +59,18 @@ class Client:
         self.send_text(f"Hello from client {datetime.now()}")
 
     def send_text(self, text: str):
-        payload_text = f"\n\n{text}"
-        payload_bytes = bytes(payload_text, self.config.TextEncoding)
+        payload_bytes = bytes(text, self.config.TextEncoding)
         self.send_data(payload_bytes)
 
     def _send_dictionary(self):
         generated_dictionary = DataService.get_sample_dictionary()
-        logging.info("Sending dictionary: {}", repr(generated_dictionary))
         serialized = DataService.serialize(generated_dictionary, self.config.DictionarySerializationMethod)
         if type(serialized) is str:
+            logging.info("Sending dictionary:")
+            pprint.pprint(serialized, indent=2)
             self.send_text(serialized)
         else:
+            logging.info("Sending binary dictionary: {}", repr(serialized))
             self.send_data(serialized)
 
     def _send_file(self, file_path: str):

@@ -1,5 +1,6 @@
 import functools
 import logging
+import pprint
 import signal
 import socket
 from datetime import datetime
@@ -16,18 +17,23 @@ class ServerConnectionHandler:
         self.socket_id = new_connection_socket.getpeername()
 
     def handle(self):
-        # Expect hello message
-        self.receive()
-        # Expect dictionary
-        received_dict = self.receive()
-        deserialized_dict = DataService.deserialize(received_dict, self.config.DictionarySerializationMethod)
-        proper_dict = dict(deserialized_dict)
-        logging.info("{} - Deserialized dict: {}", self.socket_id, repr(proper_dict))
-        logging.info("{} - Deserialized dict property of 'client-time': {}", self.socket_id, proper_dict['local_time'])
-        logging.info("{} - Type of deserialized dict is {}", self.socket_id, type(deserialized_dict))
-
-        while self.is_connected:
+        try:
+            # Expect hello message
             self.receive()
+            # Expect dictionary
+            received_dict = self.receive()
+            deserialized_dict = DataService.deserialize(received_dict, self.config.DictionarySerializationMethod)
+            logging.info("{} - Deserialized dict ({}):", self.socket_id, type(deserialized_dict))
+            pprint.pprint(deserialized_dict, indent=2)
+            logging.info("{} - Deserialized dict property of 'client-time': {}, type: {}",
+                         self.socket_id, deserialized_dict['local_time'], type(deserialized_dict['local_time']))
+
+            while self.is_connected:
+                self.receive()
+        except Exception as e:
+            logging.warning("{} - Unhandled error {}", self.socket_id, e)
+        finally:
+            self._graceful_shutdown_handler("handler exiting")
 
     def receive(self):
         response = self.socket.recv(self.config.BufferSize)
