@@ -61,7 +61,7 @@ class TestPickling(unittest.TestCase):
         expected = 'b\'<constellation>Orion</constellation>\n<distance>~600 ly</distance>\n<name>Betelgeuse</name>\n<type>M1-2</type>'
         self.assertEqual(actual, expected)
     
-    def test_dont_encrypt_binary _pickling(self):
+    def test_dont_encrypt_binary_pickling(self):
         '''
         Tests is the the pickling choice returns an xml type
         '''
