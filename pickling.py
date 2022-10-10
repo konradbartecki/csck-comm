@@ -1,5 +1,9 @@
 import pickle
 import json
+
+import dicttoxml
+
+from crypt_service import CryptService
 from dictionary import some_dict
 from dict2xml import dict2xml
 from encrypt import encrypt_data
@@ -7,12 +11,12 @@ from encrypt import encrypt_data
 save_or_not = True
 
 
-def encrypt_or_not(some_dict):
+def encrypt_or_not(py_object: object):
     '''
     Does the user want the data to be encrypted
     '''
     while True:
-        encrypt = input('Are you encrypting the dictionary? y or n: ')
+        encrypt = input('Are you encrypting the dictionary? y or n: ').lower()
         if encrypt in ['y', 'n']:
             break
         else:
@@ -21,15 +25,15 @@ def encrypt_or_not(some_dict):
 
     # Checks if the user wants to encrypt their file
     if encrypt == 'y':
-        en_data = encrypt_data(some_dict)
+        en_data = encrypt_data(py_object)
         return en_data
     else:
-        data = dont_encrypt(some_dict)
+        data = dont_encrypt(py_object)
 
     return data
 
 
-def dont_encrypt(some_dict):
+def dont_encrypt(py_object: object):
     '''
     Asks the user what pickle type to use, if anything other than
     'n' or 'y' is entered, the user re-prompted.
@@ -41,7 +45,7 @@ def dont_encrypt(some_dict):
 
     # While loop to ensure the user enteres the correct value
     while True:
-        pickling_type = input('Choose your pickling format: ')
+        pickling_type = input('Choose your pickling format: [xml, json, binary]').lower()
         if pickling_type in pickling_formats:
             break
         else:
@@ -50,27 +54,27 @@ def dont_encrypt(some_dict):
 
     # Pickle's to json
     if pickling_type == 'json':
-        data_str = str(json.dumps(some_dict))
+        data_str = json.dumps(py_object)
         if save_or_not is True:
             output_file = open('json_dict.json', 'w')
-            json.dump(some_dict, output_file)
+            json.dump(py_object, output_file)
             output_file.close()
 
     # Pickle's to binary
     if pickling_type == 'binary':
-        data_str = str(pickle.dumps(some_dict))
+        data_str = pickle.dumps(py_object)
         if save_or_not is True:
             output_file = open('bin_dict.bin', 'wb')
-            pickle.dump(some_dict, output_file)
+            pickle.dump(py_object, output_file)
             output_file.close()
 
     # Pickles to xml
     if pickling_type == 'xml':
-        data_str = dict2xml(some_dict)
+        dicttoxml.set_debug(False)
+        data_str: bytes = dicttoxml.dicttoxml(py_object, attr_type=False)
         if save_or_not is True:
-            xml = dict2xml(some_dict)
             output_file = open('xml_dict', 'w')
-            output_file.write(xml)
+            output_file.write(str(data_str))
             output_file.close()
     print('Pickled!')
 
