@@ -14,10 +14,10 @@ class DataService:
     @staticmethod
     def save_file(file: TextIOWrapper, content: bytes):
         try:
+            file.seek(0)
             file.write(content)
         except Exception as e:
             logging.error("Error while writing a file {}", e)
-        finally:
             file.close()
 
     @staticmethod
