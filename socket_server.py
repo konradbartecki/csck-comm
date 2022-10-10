@@ -34,7 +34,7 @@ def server_program():
     if should_print:
         print_data(deserialized_data)
     else:
-        save_data(deserialized_data, "output_file.txt")
+        save_data(data, "output_file.txt")
     conn.close()  # close the connection
 
 
@@ -66,8 +66,9 @@ def deserialize_data(data: bytes, should_decrypt):
         return pickle.loads(data)
 
 
-def save_data(str_data):
-    open('output_file.txt', 'w').write(str_data)
+def save_data(data:bytes, filename):
+    open(filename, 'wb').write(data)
+    print("Saved file to %s" % filename)
 
 
 def print_data(str_data):
