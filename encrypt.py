@@ -5,14 +5,15 @@ from dictionary import some_dict
 import json
 import socket
 
-def encrypt_data(outfile):
+
+def encrypt_data(py_object: object):
     '''
-    This function generates a key, reads the previouly created
+    This function generates a key, reads the previously created
     encrypted_file.txt, encodes the data with UTF-8, and then 
     encrypts the data and saves it locally
     '''
     output_file_encrypt = open('encrypted_file.txt', 'w')
-    json.dump(some_dict, output_file_encrypt)
+    json.dump(py_object, output_file_encrypt)
     output_file_encrypt.close()
     
     print('We\'re all done!')
@@ -35,8 +36,10 @@ def encrypt_data(outfile):
     with open('encrypted_file.txt', 'wb') as file:
         file.write(encrypted_text)
 
-    open_encrypted = open('encrypted_file.txt')
+    file_contents: bytes
+    with open('encrypted_file.txt', 'rb') as file:
+        file_contents = file.read()
 
     print('File Encrypted!')
-    print(encrypted_text)
-    return str(open_encrypted)
+    print(file_contents)
+    return file_contents

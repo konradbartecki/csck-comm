@@ -4,14 +4,10 @@ import json
 import xml.etree.ElementTree as ET
 from crypt_service import CryptService
 
-print_data = True
-should_decrypt = False
-
 
 def server_program():
-
     host = socket.gethostname()
-    port = 5000
+    port = 5111
     server_socket = socket.socket()
     server_socket.bind((host, port))
     server_socket.listen(2)
@@ -20,39 +16,52 @@ def server_program():
 
     data = conn.recv(4096)
 
-    str_data = str(data)
+    should_save_to_file = input('Should print data or safe to file? p/f (default=p)').lower() == 'f'
+    is_encrypted = input("Is your content encrypted? y/n (default=n)").lower() == 'y'
+    should_print = not should_save_to_file
 
-    if should_decrypt:
+    if is_encrypted:
         print("Decrypting data!")
-        print(str_data)
-        str_data = CryptService().decrypt(str_data)
+        print(data)
+        data = CryptService().decrypt(data)
         print("Decrypted into:")
-        print(str_data)
+        print(data)
 
-    deserialized_data = deserialize_data(str_data)
-    if print_data:
+    deserialized_data = deserialize_data(data, is_encrypted)
+    if should_print:
         print_data(deserialized_data)
     else:
         save_data(deserialized_data, "output_file.txt")
     conn.close()  # close the connection
 
 
-def deserialize_data(str_data):
+def deserialize_data(data, should_decrypt):
     # Using try/except to check if the data from the client
     # is of a certain type i.e. binary, json, or xml. If the
     # dta enters the try clause and does not have the correct
     # data type, it moves onto the next try clause until it can be loaded
-    try:
-        # binary data
-        return  pickle.loads(str_data)
-    except:
-        try:
-            # json data
-            return json.loads(str_data)
-        except:
-            # xml data
-            tree = ET.parse(str_data)
-            return tree.getroot()
+    pickling_formats = ['binary', 'json', 'xml']
+    # While loop to ensure the user enteres the correct value
+    pickling_type = 'json'
+    if not should_decrypt:
+        while True:
+            pickling_type = input('Choose your pickling format: ').lower()
+            if pickling_type in pickling_formats:
+                break
+            else:
+                print('Incorrect format. Please enter binary, json, or xml')
+                continue
+    print("Will deserialize:")
+    print(data)
+    data
+
+    if pickling_type == 'json':
+        return json.loads(str(data))
+    elif pickling_type == 'xml':
+        tree = ET.parse(str(data))
+        return tree.getroot()
+    elif pickling_type == "binary":
+        return pickle.loads(data)
 
 
 def save_data(str_data):
