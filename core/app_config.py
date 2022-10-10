@@ -11,8 +11,7 @@ class Mode(Enum):
 
 class EncryptionType(Enum):
     NoEncryption = 1
-    Fernet = 2
-    Age = 3
+    Age = 2
 
 
 class DataType(Enum):
