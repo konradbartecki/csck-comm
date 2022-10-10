@@ -113,7 +113,7 @@ class Client:
         content_length = len(file_contents)
         content_length_bit_size = content_length.bit_length()
         content_length_as_bytes = content_length.to_bytes(content_length_bit_size + 7, 'big', signed=False)
-        logging.info("Sending a magic command to prepare server a file of {} bytes, ~{} kB",
+        logging.info("Sending a magic command to prepare the server for a file of {} bytes, ~{} kB",
                      content_length, int(content_length / 1024))
         file_cmd = bytearray(self.config.FileCommand)
         double_new_line = bytes(b'\n\n')
