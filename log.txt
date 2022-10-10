@@ -1,0 +1,460 @@
+commit c557a9320a89da84f67bf874fa58ef726d9f85ed
+Merge: 85b57f7 35d74a1
+Author: Phillip Gregory <111414535+PhillipGregory@users.noreply.github.com>
+Date:   Mon Oct 10 20:28:01 2022 +0100
+
+    Merge pull request #24 from konradbartecki/feature/crypt-service2
+    
+    Added assymetrical cryptography service
+
+commit 35d74a1973fdc7f8736e72aad91e2d2a6366a149
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Mon Oct 10 21:15:24 2022 +0200
+
+    Better file handling
+
+commit 7673d4c3cdc89ff6ea19f817c7120fd401492177
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Mon Oct 10 21:04:51 2022 +0200
+
+    Better messages
+
+commit 2851d3eee682937fcb0c24775d5589eab364caeb
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Mon Oct 10 21:02:55 2022 +0200
+
+    Working xml de/serialization
+
+commit a56d2438dc6d0882a58a5d184e781c70cd5bbc76
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Mon Oct 10 20:01:48 2022 +0200
+
+    Work backup
+
+commit dee52a4e1d0ee71f8830fae13bdea2a77097b1f7
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Mon Oct 10 19:19:06 2022 +0200
+
+    Remove unused import
+
+commit ea79e1854b7e5040962338019efe1805ca48fdcf
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Mon Oct 10 19:11:20 2022 +0200
+
+    Added support for print vs save to file on a server
+
+commit 199d00a16290a642de63e039f0f873049ab20941
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Mon Oct 10 19:06:11 2022 +0200
+
+    Rename variable, typo
+
+commit 8afed05290f69222325ba261d66a932f4cb525a9
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Mon Oct 10 18:54:25 2022 +0200
+
+    Integrated encryption service
+
+commit 6b5b717d9dcc61bd2e452e5e8f638d286bc09d16
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Mon Oct 10 18:49:07 2022 +0200
+
+    Added private and public key
+
+commit cac67f6d9f256d93a32a11857f0340135aa7330f
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Mon Oct 10 18:48:16 2022 +0200
+
+    Added assymetrical cryptography service
+
+commit 85b57f7e14c8b2aee55078093da89664a84e0fc2
+Merge: 5d247d9 fb8689b
+Author: jasonshhh <100646940+jasonshhh@users.noreply.github.com>
+Date:   Mon Oct 10 18:06:37 2022 +0100
+
+    Merge pull request #25 from konradbartecki/added_send_file
+    
+    Used python Code Style to clean up the code
+
+commit fb8689b1b73ef4b5134f0c42904aa3b605dee08f
+Author: Jason Hadwen <you@example.com>
+Date:   Mon Oct 10 18:05:50 2022 +0100
+
+    Used python Code Style to clean up the code
+
+commit ba3589b4a94eda6695e2b1ae3fa0c7499eb5df34
+Author: Jason Hadwen <you@example.com>
+Date:   Mon Oct 10 18:04:00 2022 +0100
+
+    Used python Code Style to clean up the code
+
+commit 5d247d9c8a8f88e3e17ce2dd598b1e255bf6941f
+Merge: 492d18a 77abd3c
+Author: jasonshhh <100646940+jasonshhh@users.noreply.github.com>
+Date:   Mon Oct 10 14:23:09 2022 +0100
+
+    Merge pull request #23 from konradbartecki/Revert-to-old-code
+    
+    Revert to old code
+
+commit 77abd3cb7fc2b76223108cb73be4cb3e02621e2f
+Author: Jason Hadwen <you@example.com>
+Date:   Mon Oct 10 14:20:20 2022 +0100
+
+    Master
+
+commit 78cbc52431a559485bd276ad2f6d0c8361bf4408
+Author: Jason Hadwen <you@example.com>
+Date:   Mon Oct 10 14:17:45 2022 +0100
+
+    Added send a file to the server from encrypt.py
+
+commit 492d18ae9aa7b440e420b3e7327b899ab1435d3c
+Merge: 3854e84 ee2f545
+Author: Phillip Gregory <111414535+PhillipGregory@users.noreply.github.com>
+Date:   Mon Oct 10 13:51:17 2022 +0100
+
+    Merge pull request #21 from konradbartecki/readme-and-requirements
+    
+    Adding readme.md and requirements.txt
+
+commit ee2f54509b2affd54f4b5f20343c04e61f81215f
+Author: Phillip Gregory <sgpgrego@liverpool.ac.uk>
+Date:   Mon Oct 10 12:37:31 2022 +0100
+
+    Adding readme.md and requirements.txt
+
+commit 3854e8432b498274e855ea20c1ae1f8e9a479beb
+Merge: f916a63 b4bbdd2
+Author: jasonshhh <100646940+jasonshhh@users.noreply.github.com>
+Date:   Mon Oct 10 12:09:13 2022 +0100
+
+    Merge pull request #20 from konradbartecki/Revert-to-old-code
+    
+    Revert to old code
+
+commit b4bbdd20f43298f8d93b5be2f7e99b07484668f0
+Author: Jason Hadwen <you@example.com>
+Date:   Mon Oct 10 12:06:44 2022 +0100
+
+    issues with pytest
+
+commit 150b22e1b69921dd422df2c049cddd01b18a3e97
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Mon Oct 10 03:27:03 2022 +0200
+
+    Restore directory tree
+
+commit 9c4c08eccab52925ad81d0e187b114316d4dcf47
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Mon Oct 10 03:25:14 2022 +0200
+
+    Remove my changes
+
+commit 33ce0f3a4c85661d47c35fa94b33bba2db02d09a
+Author: Jason Hadwen <you@example.com>
+Date:   Sun Oct 9 22:24:32 2022 +0100
+
+    Adding unittests file with various unit tests
+
+commit cc81cf1b00f54889f3e6ff6760ca25c0493b0619
+Author: Jason Hadwen <you@example.com>
+Date:   Sun Oct 9 11:15:40 2022 +0100
+
+    Simplified the code. Added a new fucntion encrypt_or_not to get input from
+    the user to decide if the user wants to encrypt the data
+
+commit 8e5d0f27a0dc76c347119843dca41a42490997ee
+Author: Jason Hadwen <you@example.com>
+Date:   Sun Oct 9 11:15:40 2022 +0100
+
+    Simplified the code. Added a new fucntion encrypt_or_not to get input from
+    the user to decide if the user wants to encrypt the data
+
+commit dd50187e8707b9746baf5d80a23c18227c067cb7
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Mon Oct 10 03:18:20 2022 +0200
+
+    Create new branch without my changes
+
+commit f916a63ec063e1ba5c987a69f50e6b4c98a7ab03
+Merge: 4cb90ab e556d5c
+Author: Phillip Gregory <111414535+PhillipGregory@users.noreply.github.com>
+Date:   Sun Oct 9 10:11:17 2022 +0100
+
+    Merge pull request #13 from konradbartecki/feature/requirements-libs
+    
+    Add installed libraries
+
+commit e556d5cbe8be94fa0c980977206d53a09bcf88dd
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Sun Oct 9 02:54:09 2022 +0200
+
+    Add installed libraries
+
+commit 4cb90abd5de0fe38e1d132a9f81a5c7a8244bda1
+Merge: fa27466 cd56bbc
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Sun Oct 9 02:40:55 2022 +0200
+
+    Merge pull request #11 from konradbartecki/feature/no-hardcoding
+    
+    Working client-server communication
+
+commit cd56bbc341dad3e5eeace96d97e16889dc172357
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Sun Oct 9 02:37:29 2022 +0200
+
+    Add passing test
+
+commit 10c65b99d3f2a54fe6232cc74d9d4f78aea8b2a0
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Sun Oct 9 02:30:01 2022 +0200
+
+    Working XML serialization
+
+commit d5af90a43d5b17517a5c5839b3a894d0d9be5f1f
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Sun Oct 9 01:54:30 2022 +0200
+
+    Working client to server communication with dictionary sending
+
+commit 09c07f0cc0754501f35bb05dc29c2813931d27e1
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Sat Oct 8 16:48:31 2022 +0200
+
+    Add todo
+
+commit a1256a5c3e6992d974f446d55c10cd2ed197c9b5
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Sat Oct 8 16:48:05 2022 +0200
+
+    Field can be made non-global
+
+commit 96ef6494947c536739c8b2db2b20a8a46488720f
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Sat Oct 8 16:47:36 2022 +0200
+
+    Make code more readable
+
+commit efcc248558ee31e691f899e0cf644d1c4a842372
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Sat Oct 8 16:46:33 2022 +0200
+
+    Rename files
+
+commit 5dd099d499820cd489a1772d4bc26f566b9b4f4e
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Sat Oct 8 16:40:40 2022 +0200
+
+    Working client-server communication
+
+commit fa27466ffc9ee17408b99b2a0f71026d078536c3
+Merge: 9494dcb 528e699
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Sat Oct 8 21:54:00 2022 +0200
+
+    Merge pull request #12 from konradbartecki/print_encrypted_file
+    
+    Merge pull request #10 from konradbartecki/finalising_code
+
+commit 528e699c0c8e75aa0d57a1bd32d431149747a4e8
+Author: Jason Hadwen <you@example.com>
+Date:   Sat Oct 8 16:22:22 2022 +0100
+
+    Merge pull request #10 from konradbartecki/finalising_code
+    printing encrypted file on the server
+
+commit 9494dcb2263a01297e356e43fd7a7061a6c00318
+Merge: 2b2ea6e 24a4d44
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Sat Oct 8 15:00:43 2022 +0200
+
+    Merge pull request #3 from konradbartecki/feature/http-proposal
+    
+    Added message standard proposal
+
+commit 24a4d44227c62b10df7a13196a5ffd1d1845e5b1
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Sat Oct 8 14:59:40 2022 +0200
+
+    Fix init py
+
+commit d0923230c04e0f4ab4201f1e0aa80a2371af9b59
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Tue Oct 4 03:22:01 2022 +0200
+
+    CsckProtocol stub
+
+commit dff64a7efb09e955121a23bf22ce1f80d724760a
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Wed Sep 28 00:37:39 2022 +0200
+
+    Added message standard proposal
+
+commit 2b2ea6e9ebd0813f345ec567dfb8093ae45b7352
+Merge: ab6b75c f178b6a
+Author: Phillip Gregory <111414535+PhillipGregory@users.noreply.github.com>
+Date:   Sat Oct 8 13:01:34 2022 +0100
+
+    Merge pull request #10 from konradbartecki/finalising_code
+    
+    finalising_code
+
+commit f178b6a3ddb673ea93053c82ede3a648cbf5b5d2
+Author: Jason Hadwen <you@example.com>
+Date:   Sat Oct 8 10:05:50 2022 +0100
+
+    finalising the code. Intergrating the pickling/ enncryption
+    with the server/client. Configuring the print or save functionality
+
+commit ab6b75c86bbde8dda0bfa1d16f8a64fc870bde0e
+Author: Jason Hadwen <you@example.com>
+Date:   Sat Oct 8 09:47:25 2022 +0100
+
+    Finalising the code. Congifuring print or save. Integrating pickling/encryption with client/server
+
+commit 4a1e69c65ed05c6851987ec1be4a8c91f8d161bc
+Author: Jason Hadwen <you@example.com>
+Date:   Fri Oct 7 15:54:29 2022 +0100
+
+    No changes just pushing the code
+
+commit 8d141f0823383b26658251183b0fa07508e37199
+Author: Jason Hadwen <you@example.com>
+Date:   Fri Oct 7 15:48:53 2022 +0100
+
+    Configuring print and save functionalities
+
+commit 983713aeb67bca5ad2b9ae305f541f8346c2d862
+Author: Jason Hadwen <you@example.com>
+Date:   Fri Oct 7 15:42:43 2022 +0100
+
+    Configuring the ability to print or save the file
+
+commit 80c5a6aec1f21647385480301f425ce6f430b163
+Author: Jason Hadwen <you@example.com>
+Date:   Fri Oct 7 10:03:44 2022 +0100
+
+    Getting pickling and encryption working with the server
+
+commit b150d69925cbd8af3004e99e459cddfa786c4a55
+Author: Jason Hadwen <you@example.com>
+Date:   Fri Oct 7 09:59:59 2022 +0100
+
+    Got the pickling/encryption working with the client server
+
+commit 47ca7b56250ff1271b2b42d438d983f67f1aa979
+Merge: 815242f 0967e88
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Wed Oct 5 19:57:22 2022 +0200
+
+    Merge pull request #6 from konradbartecki/input_text
+    
+    Input text
+
+commit 815242f51ed54370cd6bf1a7878152122b79819b
+Merge: 6447efc 80a3e02
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Tue Oct 4 00:44:35 2022 +0200
+
+    Merge pull request #7 from konradbartecki/feature/pickling_and_encryption
+    
+    Added a dictionary
+
+commit 80a3e02d071549e369f1d9de5b2f363c7684fde6
+Author: Jason Hadwen <you@example.com>
+Date:   Wed Sep 28 19:11:34 2022 +0100
+
+    Added a dictionary
+    Set up the pickle function
+    Set up the pickling function
+
+commit 6447efc3b09d447d28ac1cc8f9234b0f94b10349
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Tue Oct 4 00:38:27 2022 +0200
+
+    Revert "Added a dictionary"
+    
+    This reverts commit 001d87f56baf5066847ade7eb3d133499fd69520.
+
+commit 0967e88a23fd5b8627a4ecfa50b7d7d6873377ed
+Author: Phillip Gregory <sgpgrego@liverpool.ac.uk>
+Date:   Sun Oct 2 19:59:56 2022 +0100
+
+    Added input text option.
+    Edited comments.
+
+commit c6ac40d4b592071dfebe3c170663991dbd7eaaa3
+Author: Phillip Gregory <sgpgrego@liverpool.ac.uk>
+Date:   Sun Oct 2 19:59:10 2022 +0100
+
+    Added input to send message. Edited comments.
+
+commit 001d87f56baf5066847ade7eb3d133499fd69520
+Author: Jason Hadwen <you@example.com>
+Date:   Wed Sep 28 19:11:34 2022 +0100
+
+    Added a dictionary
+    Set up the pickle function
+    Set up the pickling function
+
+commit cf9ad3b2134660f908f497f18427fc39311fe722
+Merge: 96677d3 7e60d25
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Tue Sep 27 22:55:29 2022 +0200
+
+    Merge pull request #1 from konradbartecki/feature/config
+    
+    Initial config
+
+commit 96677d3b616a2e452ea54c99157122cced24a2c4
+Merge: 0df1766 f340de3
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Tue Sep 27 22:50:14 2022 +0200
+
+    Merge pull request #2 from konradbartecki/feature/basic-client-server
+    
+    Created client/server network
+
+commit 7e60d250eb78b8abbe1ff6f601c71753d0551afd
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Tue Sep 27 18:37:58 2022 +0200
+
+    Added passing config test
+
+commit 486e082f9f40569ea72d1d4f057fb3bc1b496787
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Tue Sep 27 18:32:09 2022 +0200
+
+    Defined default values for config
+
+commit 64b1c47c22d58f86fbb0587ca9562129836817db
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Tue Sep 27 18:22:09 2022 +0200
+
+    Initial config
+
+commit f340de396a3ff343c2aa3cbf3dec41229ae3b309
+Author: Phillip Gregory <sgpgrego@liverpool.ac.uk>
+Date:   Tue Sep 27 16:26:12 2022 +0100
+
+    Created client/server network
+
+commit 0df17667b24e4f86364a40cdb9fb550c43c3ae55
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Sat Sep 24 17:34:19 2022 +0200
+
+    ADL-1 - Initialize repo with readme and architecture decision log
+
+commit 9237902bf2863c9da77a78b50f8f474d080fc9f0
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Sat Sep 24 17:18:58 2022 +0200
+
+    Create python-app.yml
+
+commit 1d36d49dbfee1eed32d64e4323ff2a684fb1b07a
+Author: Konrad Bartecki <konradbartecki@outlook.com>
+Date:   Sat Sep 24 17:16:29 2022 +0200
+
+    Initial commit
