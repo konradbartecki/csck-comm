@@ -53,6 +53,7 @@ def server_program():
     # key = call_key()
     # print(key)
     # f = Fernet(key)
+    # print(f)
     # decoded_data = f.decrypt(code)
     # print(decoded_data)
 
