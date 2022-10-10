@@ -5,6 +5,8 @@ import xml.etree.ElementTree as ET
 
 from cryptography.fernet import Fernet
 
+from crypt_service import CryptService
+
 print_data = True
 
 
@@ -12,6 +14,7 @@ def server_program():
 
     host = socket.gethostname()
     port = 5000
+    should_encrypt = False
 
     server_socket = socket.socket()
 
@@ -25,10 +28,16 @@ def server_program():
 
     str_data = str(data)
 
-    if print_data is True:
+    if should_encrypt:
+        print("Decrypting data!")
+        print(str_data)
+        str_data = CryptService().decrypt(str_data)
+        print("Decrypted into:")
+        print(str_data)
+    if print_data:
         # Using try/except to check if the data from the client
         # is of a certain type i.e. binary, json, or xml. If the
-        # data enters the try clause and does not have the correct
+        # dta enters the try clause and does not have the correct
         # data type, it moves onto the next try clause until it can be loaded
         try:
             # binary data

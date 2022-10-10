@@ -1,5 +1,7 @@
 import pickle
 import json
+
+from crypt_service import CryptService
 from dictionary import some_dict
 from dict2xml import dict2xml
 from encrypt import encrypt_data
