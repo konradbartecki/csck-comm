@@ -14,7 +14,7 @@ def server_program():
 
     host = socket.gethostname()
     port = 5000
-    should_encrypt = False
+    should_decrypt = False
 
     server_socket = socket.socket()
 
@@ -28,7 +28,7 @@ def server_program():
 
     str_data = str(data)
 
-    if should_encrypt:
+    if should_decrypt:
         print("Decrypting data!")
         print(str_data)
         str_data = CryptService().decrypt(str_data)
@@ -57,14 +57,6 @@ def server_program():
                     print(root)
                 except:
                     return
-    # code = bytes(str_data, 'utf-8')
-    # def call_key(): return open("my_key.key", "r").read()
-    # key = call_key()
-    # print(key)
-    # f = Fernet(key)
-    # print(f)
-    # decoded_data = f.decrypt(code)
-    # print(decoded_data)
 
     conn.close()  # close the connection
 
