@@ -1,6 +1,5 @@
 import logging
 import pickle
-import xml
 from datetime import datetime
 import json
 from io import TextIOWrapper

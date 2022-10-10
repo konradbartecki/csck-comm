@@ -23,19 +23,33 @@ class Server:
         logging.info("Starting a listener at {}:{}", self.config.IPAddress, self.config.Port)
         self.server_socket.bind((self.config.IPAddress, self.config.Port))
         self.server_socket.listen()
+
+        # Connection listener will be itself run in the background thread
+        # to ensure that we are not blocking the main thread
+        # and can accept multiple connections
         self.listening_thread = threading.Thread(target=self.listen)
         self.listening_thread.start()
+
         self._register_graceful_shutdown_handler()
 
     def listen(self):
+        """
+        Server listening loop.
+        On new connection, a new background thread is created
+        handled by ServerConnectionHandler.
+        Meaning one ServerConnectionHandler per incoming connection
+        """
         while self.is_accepting:
             logging.info("Waiting for a connection to accept")
             try:
                 (conn, address) = self.server_socket.accept()
                 logging.info('Connection from {}', address)
+
+                # Run new connection handler in a background
                 connection_handler_thread = threading.Thread(target=ServerConnectionHandler(conn, self.config).handle)
                 self.threads.append(connection_handler_thread)
                 connection_handler_thread.start()
+
             except ConnectionAbortedError:
                 logging.warning('Listener thread stopping...')
                 self.is_accepting = False;

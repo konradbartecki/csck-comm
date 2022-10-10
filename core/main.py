@@ -2,12 +2,12 @@ import sys
 import socket
 import argparse
 import logging
-
 from app_config import Mode, DataType, AppConfig, EncryptionType
 from client import Client
 from color_formatter import ColorizedArgsFormatter
 from csck_exceptions import CsckException
 from server import Server
+
 
 
 def init_logging():
@@ -32,7 +32,7 @@ def prepare_argument_parser():
                                             'as a server use 0.0.0.0 to bind on all available interfaces', type=str)
     parser.add_argument('-e', '--encoding', help='Text encoding to use', default="utf-8", type=str)
     parser.add_argument('-s', '--secure', help='Encryption method to use', type=str,
-                        choices=["NoEncryption", "Fernet", "Age"],
+                        choices=["NoEncryption", "Age"],
                         default="NoEncryption")
     parser.add_argument('-dsm', '--serialization-method',
                         choices=["Binary", "XML", "JSON"],

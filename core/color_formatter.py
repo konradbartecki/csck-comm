@@ -1,5 +1,7 @@
-# Source: https://medium.com/analytics-vidhya/python-logging-colorize-your-arguments-41567a754ac
-
+"""
+This file is a 3rd party code for colored console logging
+Source: https://medium.com/analytics-vidhya/python-logging-colorize-your-arguments-41567a754ac
+"""
 import logging
 import logging.handlers
 import re
