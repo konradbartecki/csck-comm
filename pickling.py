@@ -1,6 +1,8 @@
 import pickle
 import json
 
+import dicttoxml
+
 from crypt_service import CryptService
 from dictionary import some_dict
 from dict2xml import dict2xml
@@ -68,11 +70,11 @@ def dont_encrypt(py_object: object):
 
     # Pickles to xml
     if pickling_type == 'xml':
-        data_str = dict2xml(py_object)
+        dicttoxml.set_debug(False)
+        data_str: bytes = dicttoxml.dicttoxml(py_object, attr_type=False)
         if save_or_not is True:
-            xml = dict2xml(py_object)
             output_file = open('xml_dict', 'w')
-            output_file.write(xml)
+            output_file.write(str(data_str))
             output_file.close()
     print('Pickled!')
 

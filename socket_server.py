@@ -2,6 +2,9 @@ import socket
 import pickle
 import json
 import xml.etree.ElementTree as ET
+
+import xmltodict
+
 from crypt_service import CryptService
 
 
@@ -35,7 +38,7 @@ def server_program():
     conn.close()  # close the connection
 
 
-def deserialize_data(data, should_decrypt):
+def deserialize_data(data: bytes, should_decrypt):
     # Using try/except to check if the data from the client
     # is of a certain type i.e. binary, json, or xml. If the
     # dta enters the try clause and does not have the correct
@@ -51,15 +54,14 @@ def deserialize_data(data, should_decrypt):
             else:
                 print('Incorrect format. Please enter binary, json, or xml')
                 continue
-    print("Will deserialize:")
-    print(data)
-    data
 
+    print("Will deserialize into %s" % pickling_type)
+    print(data)
     if pickling_type == 'json':
-        return json.loads(str(data))
+        return json.loads(data)
     elif pickling_type == 'xml':
-        tree = ET.parse(str(data))
-        return tree.getroot()
+        decoded_str = data.decode('utf-8')
+        return xmltodict.parse(decoded_str)['root']
     elif pickling_type == "binary":
         return pickle.loads(data)
 
@@ -69,6 +71,7 @@ def save_data(str_data):
 
 
 def print_data(str_data):
+    print("Deserialized content:")
     print(str_data)
 
 
