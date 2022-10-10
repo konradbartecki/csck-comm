@@ -2,6 +2,7 @@ import unittest
 from dictionary import some_dict
 import sys
 import socket
+import time
 sys.path.insert(0, '')
 from pickling import *
 
@@ -74,12 +75,13 @@ class TestPickling(unittest.TestCase):
     
 class TestSocketClient(unittest.TestCase):
     '''
-    Class defining SocketClient
+    Class defining TestSocketClient
     '''
     def test_client_program(self):
         '''
         Tests if the data has been succesfully encrypted
         '''
+        
 
 class TestSocketServer(unittest.TestCase):
     '''
@@ -89,5 +91,4 @@ class TestSocketServer(unittest.TestCase):
         '''
         Tests if the data has been succesfully encrypted
         '''
-        # Start game server in a background thread
-    
+        

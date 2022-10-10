@@ -36,8 +36,10 @@ def encrypt_data(outfile):
     with open('encrypted_file.txt', 'wb') as file:
         file.write(encrypt_dict)
 
+    open_encrypted = open('encrypted_file.txt')
+
     print('File Encrypted!')
 
     print(encrypt_dict)
 
-    return str(encrypt_dict)
+    return str(open_encrypted)
