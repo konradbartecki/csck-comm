@@ -61,7 +61,7 @@ class TestPickling(unittest.TestCase):
         expected = 'b\'<constellation>Orion</constellation>\n<distance>~600 ly</distance>\n<name>Betelgeuse</name>\n<type>M1-2</type>'
         self.assertEqual(actual, expected)
     
-    def test_dont_encrypt_xml_pickling(self):
+    def test_dont_encrypt_binary_pickling(self):
         '''
         Tests is the the pickling choice returns an xml type
         '''
@@ -72,23 +72,4 @@ class TestPickling(unittest.TestCase):
         expected = 'b\'\\x80\\x04\\x95T\\x00\\x00\\x00\\x00\\x00\\x00\\x00}\\x94(\\x8c\\x04name\\x94\\x8c\\nBetelgeuse\\x94\\x8c\\x04type\\x94\\x8c\\x04M1-2\\x94\\x8c\\x08distance\\x94\\x8c\\x07~600 ly\\x94\\x8c\\rconstellation\\x94\\x8c\\x05Orion\\x94u.'
         self.assertEqual(actual, expected)
 
-    
-class TestSocketClient(unittest.TestCase):
-    '''
-    Class defining TestSocketClient
-    '''
-    def test_client_program(self):
-        '''
-        Tests if the data has been succesfully encrypted
-        '''
-        
-
-class TestSocketServer(unittest.TestCase):
-    '''
-    Class defining SocketServer
-    '''
-    def test_client_program(self):
-        '''
-        Tests if the data has been succesfully encrypted
-        '''
         
