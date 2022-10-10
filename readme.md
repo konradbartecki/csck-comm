@@ -34,6 +34,10 @@ python3 core/main.py -m Server --ip "0.0.0.0"   --port 8222 -dsm Binary
 python3 core/main.py -m Client --ip "127.0.0.1" --port 8222 -dsm Binary
 ```
 
+## Showcase
+
+https://user-images.githubusercontent.com/3373490/194787937-7d8dcbcc-9310-4202-b75f-2cfcc24c9ef3.mov
+
 
 ## Architecture Decision Log
 
@@ -45,3 +49,5 @@ For testing `pytest` should be used.
 This repository was already configured with GitHub workflows to run tests on each commit.
 
 For encryption, we could try to use [age](https://github.com/FiloSottile/age) which is a modern version of public-private key encryption inspired by PGP.
+
+
