@@ -48,7 +48,7 @@ def deserialize_data(data: bytes, should_decrypt):
     pickling_type = 'json'
     if not should_decrypt:
         while True:
-            pickling_type = input('Choose your pickling format: ').lower()
+            pickling_type = input('Choose your pickling format: [xml, json, binary]').lower()
             if pickling_type in pickling_formats:
                 break
             else:

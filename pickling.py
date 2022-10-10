@@ -45,7 +45,7 @@ def dont_encrypt(py_object: object):
 
     # While loop to ensure the user enteres the correct value
     while True:
-        pickling_type = input('Choose your pickling format: ').lower()
+        pickling_type = input('Choose your pickling format: [xml, json, binary]').lower()
         if pickling_type in pickling_formats:
             break
         else:
