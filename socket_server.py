@@ -1,35 +1,35 @@
 import socket
 import pickle
-import json 
+import json
 import xml.etree.ElementTree as ET
-from dict2xml import dict2xml
 
 from cryptography.fernet import Fernet
 
 print_data = True
 
-def server_program():
-    
-    host = socket.gethostname()
-    port = 5000 
 
-    server_socket = socket.socket()  
+def server_program():
+
+    host = socket.gethostname()
+    port = 5000
+
+    server_socket = socket.socket()
 
     server_socket.bind((host, port))
 
     server_socket.listen(2)
-    conn, address = server_socket.accept() 
+    conn, address = server_socket.accept()
     print("Connection from: " + str(address))
 
     data = conn.recv(4096)
 
     str_data = str(data)
 
-    if print_data == True:
-    # Using try/except to check if the data from the client
-    # is of a certain type i.e. binary, json, or xml. If the
-    # data enters the try clause and does not have the correct 
-    # data type, it moves onto the next try clause until it can be loaded
+    if print_data is True:
+        # Using try/except to check if the data from the client
+        # is of a certain type i.e. binary, json, or xml. If the
+        # data enters the try clause and does not have the correct
+        # data type, it moves onto the next try clause until it can be loaded
         try:
             # binary data
             data_var = pickle.loads(str_data)
