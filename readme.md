@@ -2,6 +2,28 @@
 
 Simple client-server communication app with encryption written in Python.
 
+
+## Features
+
+ - ✅ One sided communication from client to server
+ - ✅ Support for multiple connections
+ - ✅ Asymmetrical encryption support via `age` and `x25519`
+ - ✅ Configurability via command-line arguments
+ - ✅ Dictionary serialization support (`XML`, `JSON`, Binary via `pickle`)
+ - ✅ File read/write support
+ - ✅ CTRL-C interrupt handler to gracefully shutdown connections
+ - ✅ Custom `CsckException`
+ - Client to server chat loop with encryption!
+
+## Usage
+
+```bash
+chmod +x client.sh
+chmod +x server.sh
+./server.sh
+./client.sh
+```
+
 ```bash
 usage: main.py [-h] -m {Server,Client} [-b BUFFER] [-p PORT] [-ip IP] [-e ENCODING] [-s {NoEncryption,Age}]
                [-dsm {Binary,XML,JSON}] [-r [READ]] [-w [WRITE]]
