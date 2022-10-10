@@ -9,7 +9,6 @@ from csck_exceptions import CsckException
 from server import Server
 
 
-
 def init_logging():
     console_format = "%(levelname)s %(asctime)s - %(message)s"
     root_logger = logging.getLogger()
@@ -39,9 +38,11 @@ def prepare_argument_parser():
                         help='Data type that will be used for de/serialization for a dictionary',
                         default="JSON", type=str)
     parser.add_argument('-r', '--read', nargs='?',
-                        help='File path to send over the network', type=argparse.FileType("rb"))
+                        help='File path to send over the network, only used in client mode',
+                        type=argparse.FileType("rb"))
     parser.add_argument('-w', '--write', nargs='?',
-                        help='File path to save the contents to', type=argparse.FileType("wb", 0))
+                        help='File path to save the contents to, only used in server mode',
+                        type=argparse.FileType("wb", 0))
 
     return parser
 

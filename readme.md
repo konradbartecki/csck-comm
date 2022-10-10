@@ -3,7 +3,8 @@
 Simple client-server communication app with encryption written in Python.
 
 ```bash
-usage: main.py [-h] -m {Server,Client} [-b BUFFER] [-p PORT] [-ip IP] [-e ENCODING] [-s SECURE] [-i INTERACTIVE] [-dsm {Binary,XML,JSON}] [-f [FILE]]
+usage: main.py [-h] -m {Server,Client} [-b BUFFER] [-p PORT] [-ip IP] [-e ENCODING] [-s {NoEncryption,Age}]
+               [-dsm {Binary,XML,JSON}] [-r [READ]] [-w [WRITE]]
 
 CSCK-COMM v1, simple TCP/IP communication tool with encryption support.
 
@@ -17,15 +18,14 @@ options:
   -ip IP, --ip IP       IP Address to bind, as a server use 0.0.0.0 to bind on all available interfaces
   -e ENCODING, --encoding ENCODING
                         Text encoding to use
-  -s SECURE, --secure SECURE
+  -s {NoEncryption,Age}, --secure {NoEncryption,Age}
                         Encryption method to use
-  -i INTERACTIVE, --interactive INTERACTIVE
-                        Interactive client to server chat mode
   -dsm {Binary,XML,JSON}, --serialization-method {Binary,XML,JSON}
                         Data type that will be used for de/serialization for a dictionary
-  -f [FILE], --file [FILE]
-                        File path to send or save to
-
+  -r [READ], --read [READ]
+                        File path to send over the network
+  -w [WRITE], --write [WRITE]
+                        File path to save the contents to
 ```
 
 Example:
