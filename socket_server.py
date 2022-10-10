@@ -2,9 +2,6 @@ import socket
 import pickle
 import json
 import xml.etree.ElementTree as ET
-
-from cryptography.fernet import Fernet
-
 from crypt_service import CryptService
 
 print_data = True
